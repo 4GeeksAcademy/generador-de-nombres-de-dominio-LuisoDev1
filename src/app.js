@@ -6,12 +6,14 @@ import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
 window.onload = function() {
-  //write your code here
+ //write your code here
+  // Listas de palabras
+
+
   console.log("Hello Rigo from the console!");
 };*/
 
 
-// Listas de palabras
 let pronombre = ['the', 'our', 'my'];
 let adjetivo = ['great', 'big', 'best', 'smart'];
 let nombre = ['developer', 'coder', 'delicious', 'genius', 'previous'];
@@ -29,10 +31,13 @@ pronombre.forEach(pron => {
           } 
           else{
             console.log(nombreDeDominiosConExt);
-          }         
+          }          
         })
     })
   })
 });
+ 
+
+
 
 
