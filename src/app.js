@@ -1,4 +1,4 @@
-/*import "bootstrap";
+import "bootstrap";
 import "./style.css";
 
 
@@ -9,34 +9,54 @@ window.onload = function() {
  //write your code here
   // Listas de palabras
 
-
-  console.log("Hello Rigo from the console!");
-};*/
-
-
-let pronombre = ['the', 'our', 'my'];
-let adjetivo = ['great', 'big', 'best', 'smart'];
-let nombre = ['developer', 'coder', 'delicious', 'genius', 'previous'];
-let extensiones = ['.com', '.net', '.us', '.io', '.org', '.dev'];
+const pronombre = ['the', 'our', 'my'];
+const adjetivo = ['great', 'big', 'best', 'smart'];
+const nombre = ['developer', 'coder', 'delicious', 'genius', 'previous'];
+const extensiones = ['.com', '.net', '.us', '.io', '.org', '.dev'];
 
 pronombre.forEach(pron => {
   adjetivo.forEach(adj => {
-    nombre.forEach(nomb => {
-      //let nombreDeDominios = pron + adj + nomb ;
+    nombre.forEach(nomb => {      
+        
+        const lista = document.getElementById("lista");
+        lista.style.listStyleType = "none";       
+       
+        //Aplicando forEach para iterar y vaildar.
         extensiones.forEach(ext => {
-          let nombreDeDominiosConExt = pron + adj + nomb  + ext;
+          const nombreDeDominiosConExt = pron + adj + nomb + ext;             
           
           if(nomb.endsWith(ext.slice(1))){
-            console.log(pron+adj+nomb.slice(0, -ext.slice(1).length) + ext);
-          } 
-          else{
+            const nombreDeDominioAjustado = nomb.slice(0, -ext.slice(1).length) + ext;
+            console.log(nombreDeDominioAjustado);
+            const listaItem = document.createElement("li");
+            listaItem.textContent = "😎 "+ nombreDeDominioAjustado;
+            listaItem.style.color = "green";
+            listaItem.classList.add("fw-bold");
+            listaItem.classList.add("alert", "alert-success", "p-2");
+            lista.appendChild(listaItem);
+                        
+          }else{
             console.log(nombreDeDominiosConExt);
-          }          
-        })
+            const listaItem = document.createElement("li");
+            listaItem.textContent = "😂 "+nombreDeDominiosConExt;
+            listaItem.style.color = "red";
+            lista.appendChild(listaItem);
+            listaItem.classList.add("alert", "alert-danger", "p-2");
+            
+          }
+        });         
+      })
     })
-  })
-});
+  });
  
+
+
+  console.log("Hello Rigo from the console!");
+};
+
+
+
+
 
 
 
