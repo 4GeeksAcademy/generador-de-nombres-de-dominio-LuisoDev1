@@ -14,34 +14,43 @@ const adjetivo = ['great', 'big', 'best', 'smart'];
 const nombre = ['developer', 'coder', 'delicious', 'genius', 'previous'];
 const extensiones = ['.com', '.net', '.us', '.io', '.org', '.dev'];
 
+//Anidando los for para iterar sobre las listas
 pronombre.forEach(pron => {
   adjetivo.forEach(adj => {
-    nombre.forEach(nomb => {      
-        
+    nombre.forEach(nomb => {  
         const lista = document.getElementById("lista");
-        lista.style.listStyleType = "none";       
+        // Esta linea elimina las viñetas de la lista.
+        lista.style.listStyleType = "none";    
        
-        //Aplicando forEach para iterar y vaildar.
+        // Último forEach  anidado, iterando y vaildando para recortar el nombre de dominio según correspoda.
         extensiones.forEach(ext => {
-          const nombreDeDominiosConExt = pron + adj + nomb + ext;             
+          // nombreDeDiminiosConExt recibe el valor de los 4 arrays en cada iteracion.
+          const nombreDeDominioConExt = pron + adj + nomb + ext;            
           
+          //Aplicando slice para recortar el nombre de dominio en caso de que coincida con la ext.
           if(nomb.endsWith(ext.slice(1))){
             const nombreDeDominioAjustado = nomb.slice(0, -ext.slice(1).length) + ext;
-            console.log(nombreDeDominioAjustado);
-            const listaItem = document.createElement("li");
-            listaItem.textContent = "😎 "+ nombreDeDominioAjustado;
-            listaItem.style.color = "green";
-            listaItem.classList.add("fw-bold");
-            listaItem.classList.add("alert", "alert-success", "p-2");
-            lista.appendChild(listaItem);
-                        
+            //console.log(nombreDeDominioAjustado);
+            
+            // Creando Item de la lista dinamicamante.
+            const itemDeLista = document.createElement("li"); 
+            itemDeLista.textContent = "😎 "+ nombreDeDominioAjustado;
+            itemDeLista.style.color = "#0b0c0cff";
+            itemDeLista.classList.add("fw-bold","alert", "p-2");
+            itemDeLista.style.backgroundColor = "#2fb564ff"
+            itemDeLista.style.border = "2px solid #e55621ff"
+            itemDeLista.style.borderRadius = "30px";
+            lista.appendChild(itemDeLista); 
+                                   
           }else{
-            console.log(nombreDeDominiosConExt);
-            const listaItem = document.createElement("li");
-            listaItem.textContent = "😂 "+nombreDeDominiosConExt;
-            listaItem.style.color = "red";
-            lista.appendChild(listaItem);
-            listaItem.classList.add("alert", "alert-danger", "p-2");
+            // En caso de que no coincida el nombre de dominio y la extension, entonces lo mostramos completo.
+            const itemDeLista = document.createElement("li");
+            itemDeLista.textContent = "😒 "+nombreDeDominioConExt;
+            itemDeLista.style.color = "#000";
+            itemDeLista.classList.add("alert", "alert-warning", "p-2");
+            itemDeLista.style.border = "2px solid #e55621ff";
+            itemDeLista.style.borderRadius = "30px"
+            lista.appendChild(itemDeLista);
             
           }
         });         

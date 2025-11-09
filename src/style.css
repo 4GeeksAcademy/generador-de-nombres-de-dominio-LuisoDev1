@@ -1,5 +1,9 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 
 body{
-    background: white;
+    background: rgb(228, 233, 222);
+}
+
+h3 {
+    color: #343a40;
 }
